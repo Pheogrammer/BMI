@@ -4,9 +4,12 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
+    <div class=" justify-content-center">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="card-header">New Registration</div>
+
                 @if(Session::has('message'))
                 <div class="alert alert-success">
                     <ul>
@@ -23,7 +26,13 @@
                         </ul>
                     </div>
                 @endif
-                <div class="card-header">New Registration</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
 
                 <div class="card-body">
                 <form action="{{route('patientsave')}}" method="post">
@@ -31,6 +40,13 @@
                     <div class="form-group">
                       <label for="">Child's Name</label>
                       <input type="text" name="childname" id="" class="form-control" placeholder="" required aria-describedby="helpId">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Gender</label>
+                    <select required class="form-control" name="gender">
+                        <option value="Male">Male</option>
+                        <option  value="Female">Female</option>
+                    </select>
                     </div>
                     <div class="form-group">
                         <label for="">Date of Birth</label>
@@ -78,7 +94,7 @@
                         <label for="">Current Residence Place</label>
                         <input type="text" name="residenceplace" id="" class="form-control" placeholder="" required aria-describedby="helpId">
                       </div>
-                      <button type="submit" class="btn btn-secondary">Submit</button>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                       <button type="reset" class="btn btn-danger">Cancel</button>
                     </form>
                 </div>

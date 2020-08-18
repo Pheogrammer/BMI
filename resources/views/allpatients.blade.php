@@ -24,10 +24,19 @@
                         </ul>
                     </div>
                 @endif
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+
                 <div class="card-body">
 
                    <table id="myTable" class="table table-striped display text-center" style="width: 100%;">
-                       <thead class="bg-secondary">
+                       <thead>
                            <tr>
                                <th>#</th>
                                <th>Name</th>
@@ -47,14 +56,14 @@
                            @foreach ($patient as $item)
                             <tr>
                                 <td>{{$d}}</td>
-                                <td>{{$item->name}}</td>
+                                <td style="text-transform: capitalize;">{{$item->name}}</td>
                                 <td>{{$item->dateofbirth}}</td>
-                                <td>{{$item->placeofbirth}}</td>
-                                <td>{{$item->mothername}}</td>
-                                <td>{{$item->fathername}}</td>
+                                <td style="text-transform: capitalize;">{{$item->placeofbirth}}</td>
+                                <td style="text-transform: capitalize;">{{$item->mothername}}</td>
+                                <td style="text-transform: capitalize;">{{$item->fathername}}</td>
                                 <td>{{$item->phonenumber}}</td>
-                                <td>{{$item->residence}}</td>
-                                <td> <a href="{{route('patientrecords',[$item->id])}}" class="btn btn-secondary"> <i class="fa fa-eye"></i> </a> </td>
+                                <td style="text-transform: capitalize;">{{$item->residence}}</td>
+                                <td> <a title="View" href="{{route('patientrecords',[$item->id])}}" class="btn btn-primary"> <i class="fa fa-eye"></i> </a> </td>
                             </tr>
                             @php
                                 $d++;
