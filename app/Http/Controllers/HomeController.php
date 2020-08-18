@@ -8,7 +8,9 @@ use App\weight;
 use App\takenvaccine;
 use App\treatment;
 use App\vaccine;
+use App\User;
 
+use Illuminate\Support\Facades\Hash;
 class HomeController extends Controller
 {
     /**
@@ -140,5 +142,53 @@ return redirect()->route('patientrecords',[$request['id']]);
         return redirect()->back();
     }
 
+    public function users()
+    {
+        $users = User::orderBy('name','ASC')->get();
+        return view('users',['user'=>$users]);
+    }
 
+    public function editstaff($id)
+    {
+        $users = User::where('id',$id)->first();
+        return view('editstaff',['data'=>$users]);
+    }
+
+    public function saveuser(Request $request)
+    {
+        $data = User::where('id',$request['id'])->first();
+        $data->name = $request['name'];
+        $data->phone = $request['phone'];
+        $data->type = $request['type'];
+        $data->employeeID = $request['employeeid'];
+        $data->save();
+
+        return redirect()->route('users')->with(["message"=>"Staff Details Update Successfully "]);
+    }
+
+    public function staffregistration()
+    {
+        return view('staffregistration');
+    }
+
+    public function saveregistration(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required|max:15|min:10',
+            'email' => 'required|unique:users',
+
+        ]);
+
+        $resq = new User();
+        $resq->name = $request['name'];
+        $resq->email = $request['email'];
+        $resq->phone = $request['phone'];
+        $resq->password =  Hash::make($request['email']);
+        $resq->type = $request['type'];
+        $resq->employeeID = $request['employeeid'];
+        $resq->save();
+
+        return redirect()->route('users')->with(['message'=>'Staff Registered Successfully!']);
+    }
 }

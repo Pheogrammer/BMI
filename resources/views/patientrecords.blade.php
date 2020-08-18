@@ -112,7 +112,7 @@
 
             <a href="{{route('vaccines',[$recs->id])}}" class="btn btn-primary"> <i class="fas fa-syringe    "></i> Vaccines</a>
 
-            <a href="{{route('plotteddata',[$recs->id])}}" class="btn btn-primary"> <i class="fas fa-chart-line    "></i> Graph</a>
+            <a href="" class="btn btn-primary"> <i class="fas fa-chart-line    "></i> Graph</a>
 
     </div>
 </div>
@@ -121,7 +121,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Title</h5>
+                <h5 class="card-title">Weight & Height Measurement Records</h5>
                 <table class="table stripe table-light">
                     <thead class="thead-light">
                         <tr>
@@ -129,7 +129,9 @@
                             <th>Date</th>
                             <th>Weight</th>
                             <th>Height</th>
+                            <th>W/Hz score</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -145,7 +147,46 @@
                             <td><?php $time = strtotime($item->created_at); echo date('d/m/Y',$time);  ?></td>
                             <td>{{$item->weight}} Kg</td>
                             <td>{{$item->height}} M</td>
-                            <td></td>
+                            <td>
+                                @php
+                                    $bmi = $item->weight/($item->height*$item->height);
+                                @endphp
+                                {{$bmi}}
+                            </td>
+                            <td>
+                                    @if($bmi<14.9)
+                                  @php
+                                      $treat = 1;
+                                  @endphp      Severely UnderWeight <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span><span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
+                                    @elseif($bmi>=15 && $bmi<=18.4)
+                                    @php
+                                    $treat = 1;
+                                @endphp   Underweight <span class="badge badge-warning"> <i class="fas fa-info    "></i> </span>
+                                    @elseif($bmi>=18.5 && $bmi<=25.5)
+                                    @php
+                                    $treat = 0;
+                                @endphp    Normal Weight <span class="badge badge-success"> <i class="fas fa-info    "></i> </span>
+                                    @elseif($bmi>=25 && $bmi<=29.9)
+                                    @php
+                                    $treat = 0;
+                                @endphp      OverWeight <span class="badge badge-warning"> <i class="fas fa-info    "></i> </span>
+                                    @elseif($bmi>=30 && $bmi<=34.5)
+                                    @php
+                                    $treat = 1;
+                                @endphp      Obesity I <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
+                                    @elseif($bmi>=35 && $bmi<=39.9)
+                                    @php
+                                      $treat = 1;
+                                  @endphp     Obesity II <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span><span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
+                                    @else
+                                    @php
+                                      $treat = 1;
+                                  @endphp     Extreme Obesity <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span><span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
+                                    @endif
+                            </td>
+                            <td>
+                                <a  title="treat" href="" class="btn btn-primary @php if($treat==1){}else{echo'btn-disabled';} @endphp"> <i class="fas fa-procedures    "></i> </a>
+                            </td>
                         </tr>
                         @endforeach
 

@@ -28,7 +28,7 @@
                             <div class="input-group-append">
                                 <span class="input-group-text" id="my-addon">Height</span>
                             </div>
-                            <input class="form-control" name="height" min="1" type="number" name="" placeholder="Height (Meters)" aria-label="Recipient's " aria-describedby="my-addon">
+                            <input class="form-control" name="height" min="1" type="text" name="" placeholder="Height (Meters)" aria-label="Recipient's " aria-describedby="my-addon">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Submit</button>
