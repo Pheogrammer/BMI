@@ -112,7 +112,7 @@ class HomeController extends Controller
         $save->p_id = $request['id'];
         $save->save();
 
-return redirect()->route('plotteddata',[$request['id']]);
+return redirect()->route('patientrecords',[$request['id']]);
 
 
     }

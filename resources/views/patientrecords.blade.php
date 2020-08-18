@@ -35,7 +35,7 @@
                             Name: {{$recs->name}}
                         </div>
                         <div class="col">
-                            Date of Birth: {{$recs->dateofbirth}}
+                            Date of Birth: <?php $time = strtotime($recs->dateofbirth); echo date('d/m/Y',$time);  ?>
                         </div>
 
                         <div class="col">
@@ -142,7 +142,7 @@
                                 $b++;
                             @endphp
                             <td>{{$b}}</td>
-                            <td>{{$item->created_at}}</td>
+                            <td><?php $time = strtotime($item->created_at); echo date('d/m/Y',$time);  ?></td>
                             <td>{{$item->weight}} Kg</td>
                             <td>{{$item->height}} M</td>
                             <td></td>
