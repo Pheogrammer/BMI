@@ -112,7 +112,6 @@
 
             <a href="{{route('vaccines',[$recs->id])}}" class="btn btn-primary"> <i class="fas fa-syringe    "></i> Vaccines</a>
 
-            <a href="" class="btn btn-primary"> <i class="fas fa-chart-line    "></i> Graph</a>
 
     </div>
 </div>
@@ -172,20 +171,25 @@
                                 @endphp      OverWeight <span class="badge badge-warning"> <i class="fas fa-info    "></i> </span>
                                     @elseif($bmi>=30 && $bmi<=34.5)
                                     @php
-                                    $treat = 1;
+                                    $treat = 0;
                                 @endphp      Obesity I <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
                                     @elseif($bmi>=35 && $bmi<=39.9)
                                     @php
-                                      $treat = 1;
+                                      $treat = 0;
                                   @endphp     Obesity II <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span><span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
                                     @else
                                     @php
-                                      $treat = 1;
+                                      $treat = 0;
                                   @endphp     Extreme Obesity <span class="badge badge-danger"> <i class="fas fa-info    "></i> </span><span class="badge badge-danger"> <i class="fas fa-info    "></i> </span>
                                     @endif
                             </td>
                             <td>
-                                <a  title="treat" href="" class="btn btn-primary @php if($treat==1){}else{echo'btn-disabled';} @endphp"> <i class="fas fa-procedures    "></i> </a>
+                                @if($item->record>0)
+                                <span title="treated" class="badge badge-success">@if($item->record>0) <i class="fa fa-check" aria-hidden="true"></i> @endif</span>
+                                <a href="{{route('recordspdf',[$recs->id,$item->id,$bmi])}}" class="btn btn-primary" title="View medical records Document"> <i class="fa fa-file-pdf" aria-hidden="true"></i> </a>
+                                @else
+                                <a  title=" @if($item->record>0) treated already @else treat @endif" href="{{route('medicaldetails',[$recs->id,$item->id,$bmi])}}" class="btn btn-primary @if($treat>0) @if($item->record>0) disabled @endif  @else disabled @endif"> <i class="fas fa-procedures    "></i> </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

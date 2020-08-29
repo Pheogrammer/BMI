@@ -9,12 +9,13 @@
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/editpatient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editpatient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/allpatients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/allpatients.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/patientrecords.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/patientrecords.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/staffregistration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/staffregistration.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +124,20 @@
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
       <path value="$PROJECT_DIR$/vendor/balping/json-raw-encoder" />
       <path value="$PROJECT_DIR$/vendor/consoletvs/charts" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1frNODtPycgEQybOo12nWpDhTfv" />
@@ -133,7 +148,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="/opt/lampp/htdocs/kjnf" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -158,6 +173,10 @@
       <workItem from="1597211920471" duration="30000" />
       <workItem from="1597482505416" duration="4248000" />
       <workItem from="1597668881639" duration="9000" />
+      <workItem from="1597902674819" duration="616000" />
+      <workItem from="1597924574207" duration="34000" />
+      <workItem from="1598380115830" duration="1241000" />
+      <workItem from="1598690264490" duration="619000" />
     </task>
     <servers />
   </component>
@@ -169,10 +188,11 @@
       <screen x="1366" y="0" width="1280" height="1024" />
     </state>
     <state x="1601" y="154" width="800" height="712" key="#Plugins/0.27.1366.715/1366.0.1280.1024@1366.0.1280.1024" timestamp="1596973465626" />
-    <state x="1730" y="268" key="FileChooserDialogImpl" timestamp="1596976703288">
+    <state x="1730" y="268" width="424" height="491" key="FileChooserDialogImpl" timestamp="1597924607299">
       <screen x="1366" y="0" width="1280" height="1024" />
     </state>
     <state x="1730" y="268" key="FileChooserDialogImpl/0.27.1366.715/1366.0.1280.1024@1366.0.1280.1024" timestamp="1596976703288" />
+    <state x="1730" y="268" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741/1366.0.1280.1024@1366.0.1280.1024" timestamp="1597924607299" />
     <state x="1768" y="431" width="465" height="157" key="NewPhpFileDialog" timestamp="1596973754694">
       <screen x="1366" y="0" width="1280" height="1024" />
     </state>

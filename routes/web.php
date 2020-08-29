@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@allpatients')->name('allpatients');
 Route::get('patientregister','HomeController@patientregister')->name('patientregister');
 Route::post('patientsave','HomeController@patientsave')->name('patientsave');
 Route::get('allpatients','HomeController@allpatients')->name('allpatients');
@@ -41,3 +41,8 @@ Route::get('editstaff/{id}','HomeController@editstaff')->name('editstaff');
 Route::post('saveuser','HomeController@saveuser')->name('saveuser');
 Route::get('staffregistration','HomeController@staffregistration')->name('staffregistration');
 Route::post('saveregistration','HomeController@saveregistration')->name('saveregistration');
+Route::get('medicaldetails/{id}/{vid}/{whz}','HomeController@medicaldetails')->name('medicaldetails');
+Route::post('savemedics','HomeController@savemedics')->name('savemedics');
+Route::get('recordspdf/{id}/{vid}/{whz}','HomeController@recordspdf')->name('recordspdf');
+Route::get('password','HomeController@password')->name('password');
+Route::post('passwordsave','HomeController@passwordsave')->name('passwordsave');

@@ -52,8 +52,8 @@
                             <div class="form-group">
                                 <label for="">Type</label>
                                 <select  name="type" id="" class="form-control" placeholder="" required aria-describedby="helpId">
-                                    <option value="user">Staff</option>
-                                    <option value="admin">Admin</option>
+                                    <option selected value="Staff">Staff</option>
+                                    <option value="Admin">Admin</option>
                                 </select>
                             </div>
                             <div class="form-group">

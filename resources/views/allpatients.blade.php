@@ -57,7 +57,7 @@
                             <tr>
                                 <td>{{$d}}</td>
                                 <td style="text-transform: capitalize;">{{$item->name}}</td>
-                                <td>{{$item->dateofbirth}}</td>
+                                <td><?php $time = strtotime($item->dateofbirth); echo date('d/m/Y',$time);  ?></td>
                                 <td style="text-transform: capitalize;">{{$item->placeofbirth}}</td>
                                 <td style="text-transform: capitalize;">{{$item->mothername}}</td>
                                 <td style="text-transform: capitalize;">{{$item->fathername}}</td>

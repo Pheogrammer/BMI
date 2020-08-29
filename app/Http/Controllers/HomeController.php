@@ -9,6 +9,10 @@ use App\takenvaccine;
 use App\treatment;
 use App\vaccine;
 use App\User;
+use App\record;
+use Illuminate\Support\Facades\Auth;
+
+use PDF;
 
 use Illuminate\Support\Facades\Hash;
 class HomeController extends Controller
@@ -191,4 +195,99 @@ return redirect()->route('patientrecords',[$request['id']]);
 
         return redirect()->route('users')->with(['message'=>'Staff Registered Successfully!']);
     }
+
+    public function medicaldetails($id, $vid, $whz)
+    {
+        $uinfo = patient::where('id',$id)->first();
+        $vinfo = weight::where('id',$vid)->first();
+        $whz = $whz;
+
+        return view('medicaldetails',['user'=>$uinfo,'weight'=>$vinfo,'whz'=>$whz]);
+    }
+
+    public function savemedics(Request $request)
+    {
+        $record = new record();
+        $record->pid = $request['pid'];
+        $record->date = date('Y-m-d');
+        $record->whz = $request['whz'];
+        $record->oedema = $request['oedema'];
+        $record->muac = $request['muac'];
+        $record->others = $request['others'];
+        $record->weightaad = $request['weightatadmission'];
+        $record->targetwkg = $request['targetweight'];
+        $record->trForm = $request['transfer'];
+        $record->hiv = $request['hiv'];
+        if(is_null($request['readmission']))
+        {
+
+        }else{
+            $record->readmission = $request['readmission'];
+        }
+
+        if(is_null($request['returned']))
+        {
+
+        }else{
+            $record->returneddefaulter = $request['returned'];
+
+        }
+        $record->wid = $request['wid'];
+        $record->care = $request['nameofcaregiver'];
+        $record->save();
+
+        $rec = weight::where('id',$request['wid'])->first();
+        $rec->record = '1';
+        $rec->save();
+
+        return redirect()->route('patientrecords',[$request['pid']])->with(['message'=>'Records saved successfully']);
+    }
+
+    public function recordspdf($id, $vid, $whz)
+    {
+        $data['weight'] = weight::where('id',$vid)->first();
+        $data['user'] = patient::where('id',$id)->first();
+        $data['whz'] = $whz;
+        $pdf = PDF::loadView('recordspdf',$data);
+        return $pdf->stream('Patient Records'.''.date('d-m-Y Hi').'.pdf');
+    }
+
+    public function password()
+    {
+        return view('password');
+    }
+
+    public function passwordsave(Request $request)
+    {
+        $rules=[
+
+              'old' => 'required',
+              'new' => 'required',
+              'confirm' => 'required|same:new'
+
+
+
+          ];
+          $error_messages=[
+
+              'confirm.same'=>'Password did not Match. Try again.',
+
+
+          ];
+          $validator=  validator($request->all(), $rules, $error_messages);
+          if ($validator->fails()) {
+              return redirect()->back()
+                          ->withErrors($validator)
+                          ->withInput();
+         }
+
+
+          $user = User::find(auth()->user()->id);
+          if (Hash::check($request['old'], Auth::User()->password)){
+              $user->password = Hash::make($request['new']);
+              $user->save();
+              return redirect()->route('allpatients')->with(['message' => 'Password changed successfully']);
+          }
+          return redirect()->back()->withErrors(['message' => 'You entered the wrong old password']);
+      }
 }
